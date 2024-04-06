@@ -29,9 +29,11 @@ func ResourceValidate(fileName string)(bool){
     // extract json to policy struct
     json.Unmarshal(byteValue, &policy)
 
-
+    // extract "Statement" from json
     var statement = policy.PolicyDocument.Statement
 
+    // There can be multiple elements in Statement
+    // so we'll check all of them
     for i := 0; i< len(statement); i++ {
         if statement[i].Resource == "*"{
             return false

@@ -16,14 +16,15 @@ func main(){
 
 	flag.Parse()
 
-	// Show usage if lags are invalid
+	// Show usage if flags are invalid
 	if path == "" {
-		//fmt.Println("Please specify path to AWS::IAM::Role Policy json file")
 		flag.Usage()
 		os.Exit(1)
 	}
 
+	// get our goal
 	var response bool = validate.ResourceValidate(path)
 
+	// print response
 	fmt.Printf("%t\n", response)
 }

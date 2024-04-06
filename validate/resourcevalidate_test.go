@@ -3,11 +3,14 @@ package validate
 import "testing"
 
 // ResourceValidate tests
+
 type resourceValidateTest struct {
 	jsonFilePath string 
+	// expected output
 	expected bool
 }
 
+// Tests that will be run 
 var resourceValidateTests = []resourceValidateTest{
 	// Resource: "*"
 	{"test_files/asteriskResourceAwsIamRolePolicy.json", false},
