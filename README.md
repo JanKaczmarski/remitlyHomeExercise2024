@@ -1,23 +1,43 @@
-# Instalation
+## Installation
 
-## Clone github repo
-```
+### Locally
+#### Clone the GitHub repository
+```bash
 git clone https://github.com/JanKaczmarski/remitlyHomeExercise2024.git
 cd remitlyHomeExercise2024
 ```
 
-## Build and run
-```
+#### Build and run
+```bash
 go build
 ./aiamrpv -path iamPolicy.json
 ```
-#### OR
-```
+OR
+```bash
 go run . -path iamPolicy.json
 ```
-You can modify file that is passed to the script
-`aiamrpv` stands for AWS::IAM:Role Policy Validation
-# Workdir overview
+
+You can modify the file that is passed to the script.
+
+### Using Docker
+#### Pull and run the container image
+```bash
+docker pull bigjack213/aiamrpv
+docker run -it --entrypoint=/bin/bash bigjack213/aiamrpv -i
+```
+
+#### Run the binary
+```bash
+go run . -path iamPolicy.json
+```
+OR
+```bash
+./aiamrpv -path iamPolicy.json
+```
+
+Same as above, you can modify the path to the JSON file.
+
+## Directory Structure
 ```
 .
 ├── README.md
@@ -25,9 +45,9 @@ You can modify file that is passed to the script
 ├── iamPolicy.json
 ├── main.go
 ├── support
-│   ├── structs.go
-│   ├── support.go
-│   └── support_test.go
+│   ├── structs.go
+│   ├── support.go
+│   └── support_test.go
 └── validate
     ├── resourcevalidate.go
     ├── resourcevalidate_test.go
@@ -36,11 +56,6 @@ You can modify file that is passed to the script
         ├── multipleResourceAwsIamRolePolicy.json
         └── noResourceAwsIamRolePolicy.json
 ```
-`support` dir holds structs, used to extract json to go readable data and support functions \
-`validate` dir holds package that does the task and there are units test in there too\
-`validate/test_files` are json files used to unit test ResourceValidation func\
-`main.go` used to run program and accept parameters\
-`iamPolicy.json` is a json file which holds the AWS::IAM::Role Policy provided in task description
 
-
+The `support` directory holds structs used to extract JSON into Go-readable data and support functions. The `validate` directory contains packages that perform the validation task along with unit tests. The `validate/test_files` directory contains JSON files used for unit testing the `ResourceValidation` function. `main.go` is used to run the program and accept parameters, and `iamPolicy.json` is a JSON file containing the AWS IAM Role Policy provided in the task description.
 
